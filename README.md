@@ -23,3 +23,25 @@ Microservices bring a lot of complexity—enough complexity that the reasons for
 It is important to understand what you are trying to get out of a microservice architecture. What is the goal? What positive outcome do you expect a shift to microservices to bring? The outcome you are aiming for will directly impact how you break your monolith apart. If you are trying to change your system architecture to better handle scale, you’ll end up making different changes than if your main driver is to improve organizational autonomy. I cover this more in Chapter 3, and in even more detail in my book Monolith to Microservices.
 
 Many of the problems with microservices are evident only after you hit production. Therefore, I strongly recommend an incremental, evolutionary decomposition of an existing monolith rather than a “big bang” rewrite. Identify a microservice you want to create, extract the appropriate functionality from the monolith, deploy the new microservice into production, and start using it in anger. Based on that, you’ll see if you are helping move toward your goal, but you’ll also learn a lot that will make the next microservice extraction easier—or perhaps it will suggest to you that microservices might not be the way forward after all!
+
+### Communication Styles
+
+We summarized the main forms of inter-microservice communication in Chapter 4, shared again in Figure A-1. This isn’t meant to be a universal model but is intended to just give an overview of the different types of communication that are most common.
+
+!['Image 00'](./assets/image00.png)
+_Figure A-1. Different styles of inter-microservice communication along with example
+implementing technologies_
+
+With request-response communication, a microservice sends a request to a downstream microservice and expects a response. With synchronous request-response, we would expect the response to come back to the microservice instance that sent the request. With asynchronous request-response, it’s possible for the response to come back to a different instance of the upstream microservices.
+
+With event-driven communication, a microservice emits an event, and other microservices, if they are interested in that event, can react to it. Events are just statements of fact—information that is shared about something that has happened. With event driven communication, a microservice doesn’t tell another microservice what to do; it just shares events. It’s up to downstream microservices to make a judgment call as to what they do with that information. Event-driven communication is by definition asynchronous in nature.
+
+One microservice may communicate over more than one protocol. For example, in Figure A-2 we see a Shipping microservice providing a REST interface for request
+response interaction, which also fires events when changes are made.
+
+!['Image 01'](./assets/image01.png)
+_Figure A-2. A microservice exposing its functionality over a REST API and a topic_
+
+Event-driven collaboration can make it easier to build more loosely coupled architectures, but it can require more work to understand how the system is behaving. This type of communication also often requires the use of specialist technology such as message brokers, which can further complicate matters. If you can use a fully managed message broker, that can help lower the cost of these types of systems.
+
+Request-response and event-driven interaction models both have their place, and often which one you use will be a personal preference. Some problems just fit one model more than another, and it’s common for a microservice architecture to have a mix of styles.
