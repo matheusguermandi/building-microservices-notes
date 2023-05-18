@@ -98,3 +98,18 @@ With more information flowing over networks, it becomes more important to consid
 JWTs can be used to decentralize authorization logic in a way that also avoids the need for additional round trips. This can help protect you from issues like the confused deputy problem, while at the same time ensuring your microservice can run in a more independent fashion.
 
 Finally, increasing numbers of people are adopting a zero-trust mindset. With zero trust, you operate as though your system has already been compromised and you need to build your microservices accordingly. It may seem like a paranoid stance, but I’m increasingly of the opinion that embracing this principle can actually simplify how you view the security of your system.
+
+### Resiliency
+
+Microservices give us a number of different ways to scale an application. In Chapter 13, I explore the four axes of scaling, which I share below:
+
+- Vertical scaling
+  In a nutshell, this means getting a bigger machine.
+- Horizontal duplication
+  Having multiple things capable of doing the same work.
+- Data partitioning
+  Dividing work based on some attribute of the data, e.g., customer group.
+- Functional decomposition
+  Separation of work based on the type, e.g., microservice decomposition.
+
+With scaling, do the easy stuff first. Vertical scaling and horizontal duplication are quick and easy compared with the other two axes presented here. If they work, great! If not, you can look at the other mechanisms. It’s common as well to mix the different types of scaling—partitioning your traffic based on customers, for example, and then having each partition scaled horizontally
