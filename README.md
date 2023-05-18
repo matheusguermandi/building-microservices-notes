@@ -113,3 +113,9 @@ Microservices give us a number of different ways to scale an application. In Cha
   Separation of work based on the type, e.g., microservice decomposition.
 
 With scaling, do the easy stuff first. Vertical scaling and horizontal duplication are quick and easy compared with the other two axes presented here. If they work, great! If not, you can look at the other mechanisms. It’s common as well to mix the different types of scaling—partitioning your traffic based on customers, for example, and then having each partition scaled horizontally
+
+### User Interfaces
+
+All too often, the user interface is an afterthought when it comes to system decomposition—we break apart our microservices but leave a monolithic user interface. This in turn leads to the problems of having separate frontend and backend teams. Instead, we want stream-aligned teams, where one team owns all the functionality associated with an end-to-end slice of user functionality. To make that change happen and get rid of siloed frontend and backend teams, we need to break apart our user interfaces.
+
+In Chapter 14, I share how we can use micro frontends to deliver decomposed user interfaces using single-page app frameworks like React. User interfaces often face problems in terms of the number of calls they need to make, or because they need to perform call aggregation and filtering to suit mobile devices. The backend for frontend (BFF) pattern can help provide server-side aggregation and filtering in these situations, although if you are able to use GraphQL, you may be able to sidestep the use of BFFs.
