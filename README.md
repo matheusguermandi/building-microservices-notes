@@ -119,3 +119,13 @@ With scaling, do the easy stuff first. Vertical scaling and horizontal duplicati
 All too often, the user interface is an afterthought when it comes to system decomposition—we break apart our microservices but leave a monolithic user interface. This in turn leads to the problems of having separate frontend and backend teams. Instead, we want stream-aligned teams, where one team owns all the functionality associated with an end-to-end slice of user functionality. To make that change happen and get rid of siloed frontend and backend teams, we need to break apart our user interfaces.
 
 In Chapter 14, I share how we can use micro frontends to deliver decomposed user interfaces using single-page app frameworks like React. User interfaces often face problems in terms of the number of calls they need to make, or because they need to perform call aggregation and filtering to suit mobile devices. The backend for frontend (BFF) pattern can help provide server-side aggregation and filtering in these situations, although if you are able to use GraphQL, you may be able to sidestep the use of BFFs.
+
+### Organization
+
+In Chapter 15, we looked at the shift away from horizontally aligned, siloed teams toward team structures that are organized around end-to-end slices of functionality. These stream-aligned teams, as the authors of Team Topologies describe them, are supported by enabling teams, as Figure A-3 shows. Enabling teams will often have a specific cross-cutting focus, such as focusing on security or usability, and support the stream-aligned teams in these aspects.
+
+!['Image 02'](./assets/image02.png)
+
+_Figure A-3. Enabling teams support multiple stream-aligned teams_
+
+Making these stream-aligned teams as autonomous as possible means that they need self-service tools to avoid having to constantly ask other teams to do things for them. As part of this, a platform can be incredibly useful. It’s important, though, that we see a platform as a type of paved road—that is, as something that makes it easy to do the right thing, without requiring that it must be used. Making a platform optional ensures that making the platform easy to use remains a key focus of the team owning it, while also allowing teams to make a different choice when warranted.
